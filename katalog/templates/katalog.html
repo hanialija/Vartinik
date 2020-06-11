@@ -1,0 +1,39 @@
+{% extends 'vartinik/templates/layout.html' %}
+
+{% block content %}
+
+{% load static %}
+
+
+
+
+{% if listaC %}
+<a id="shto" href="{% url 'regjistro' %}" class="btn btn-info">Shto</a>
+<div class="card1" style="  display: flex; flex-wrap: wrap; flex-direction: row; width:auto;">
+
+    {% for p in listaC %}
+
+    <div class="card" style="margin: 10px;" id="{{ p.id }}">
+        <div style="text-align: center;">
+            <img class="imgcard" src="{{ p.foto.url }}" alt="" height="170px" width="auto" >
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{ p.titulli }}</h5>
+            <p class="card-text">{{ p.desc}}</p>
+            <h6>Qmimi: {{ p.qmimi}} Den</h6>
+        </div>
+        <div class="card-footer">
+            <button class='btn btn-danger' onclick='fshiKonfirmoCard("{{ p.id }}")'> Fshi </button>
+            <a href='{% url "edit" p.id %}' class="btn btn-success">Modifiko</a>
+            <br>
+            <small class="text-muted">{{ p.data }}</small>
+        </div>
+    </div>
+
+    
+
+
+    {% endfor %}
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'vartinik/templates/layout.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<div class="container">
+    <h1>{{ mode }} ne katalog.</h1><br />
+    <div class="row">
+        <div class="col-md-12">
+            {% if forma %}
+            <form action="" method="POST" enctype="multipart/form-data">
+                <table style="margin: 5px;">
+                {% csrf_token %}
+                {{ forma.as_table }}
+                </table>
+                <input class="btn btn-primary" type="submit" value="Regjistro" />
+            </form>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
